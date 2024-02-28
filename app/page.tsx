@@ -12,6 +12,6 @@ export default async function Home() {
   })
 
   return (
-    <HomePage orders={orders}/>
+    <HomePage orders={orders as any}/>
   )
 }

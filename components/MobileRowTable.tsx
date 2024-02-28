@@ -1,5 +1,6 @@
 import { IoIosArrowBack } from "react-icons/io"
 import { OrderInterfase } from "./OrderTable"
+import { cn } from "@/lib/utils"
 
 interface MobileRowInterface {
     order: OrderInterfase
@@ -11,8 +12,11 @@ function MobileRowTable({ order }: MobileRowInterface) {
         <div className="w-full flex items-center ">
             <div className="flex flex-col w-full flex-1">
                 <div className="flex justify-between w-full">
-                    <div className={`h-4 px-1 text-xs rounded-md ${order.status === "מאושר" ? "bg-green-200 text-green-500" : "bg-red-200 text-red-500"} ${order.status === "בוצע" ? "bg-green-100 text-green-400" : ""}`}>{order.status}</div>
-                    <div className="text-xs">₪ 1,132.82</div>
+                    <div className={cn("h-4 px-1 text-xs rounded-md", {
+                        "bg-blue-200 text-blue-500": order.status === "מאושר",
+                        "bg-red-200 text-red-500": order.status === "ממתין לאישור",
+                        "bg-green-100 text-green-400": order.status === "בוצע",
+                    })}>{order.status}</div>                    <div className="text-xs">₪ 1,132.82</div>
                 </div>
                 <div className=" w-full">
                     <div className="font-semibold">{order.customer}</div>

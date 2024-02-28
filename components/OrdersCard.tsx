@@ -60,7 +60,7 @@ function OrdersCard({ selectedOrder, handleCloseCard }: OrdersCardInterface) {
                         <div className="text-sm  font-semibold mb-6 sm:hidden block">
                             פרטי ההזמנה
                         </div>
-                        <p className="mb-8 sm:mb-2"><strong>{selectedOrder.date}</strong></p>
+                        <p className="mb-2 sm:mb-2"><strong>{selectedOrder.date}</strong></p>
                         <p className={`mb-3 sm:mb-2 ${selectedOrder.urgency === "רגילה" ? "text-green-500 " : "text-red-500"} ${selectedOrder.urgency === "נמוכה" ? "text-blue-400" : ""}`}><strong>{selectedOrder.urgency}</strong></p>
                         <p className="mb-3 sm:mb-2"><strong>{selectedOrder.branch}</strong></p>
                         <p className="mb-3 sm:mb-2"><strong>{selectedOrder.order_type == null ? "לא זמין סוג הזמנה" : selectedOrder.order_type}</strong></p>

@@ -116,7 +116,8 @@ export function OrderTable({ orders }: OrderTableInterface) {
                                             "bg-blue-200 text-blue-500 w-12": order.status === "מאושר",
                                             "bg-green-200 text-green-500 w-12": order.status === "בוצע",
                                         })}>{order.status}</p>
-                                    </TableCell>                                    <TableCell className="max-sm:hidden">{order.branch}</TableCell>
+                                    </TableCell>
+                                    <TableCell className="max-sm:hidden">{order.branch}</TableCell>
                                     <TableCell className="max-sm:hidden">{order.num_of_guests}</TableCell>
                                     <TableCell className="max-sm:hidden">{order.created_at}</TableCell>
                                     <TableCell className="max-sm:hidden">{order.time}</TableCell>

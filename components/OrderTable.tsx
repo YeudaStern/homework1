@@ -14,6 +14,7 @@ import OrdersCard from "./OrdersCard";
 import { Skeleton } from "./ui/skeleton";
 import MobileRowTable from "./MobileRowTable";
 import { FiChevronLeft } from "react-icons/fi";
+import { cn } from "@/lib/utils";
 
 export interface OrderInterfase {
     order_id: number;
@@ -105,8 +106,17 @@ export function OrderTable({ orders }: OrderTableInterface) {
                                             <MobileRowTable order={order} />
                                         </div>
                                     </TableCell>
-                                    <TableCell className={`mb-2 max-sm:hidden ${order.status === "ממתין לאישור" ? "text-orange-500" : "text-green-500"} ${order.status === "מאושר" ? "text-blue-500 w-12" : ""}`}> <p className={`mb-2  text-black rounded-md text-center max-sm:hidden ${order.status === "ממתין לאישור" ? "bg-red-200 text-red-500 w-24" : "bg-blue-200 text-blue-500 w-12"} ${order.status === "בוצע" ? "bg-green-200 text-green-500" : ""}`}>{order.status}</p> </TableCell>
-                                    <TableCell className="max-sm:hidden">{order.branch}</TableCell>
+                                    <TableCell className={cn("mb-2 max-sm:hidden", {
+                                        "text-orange-500": order.status === "ממתין לאישור",
+                                        "text-green-500 w-12": order.status === "מאושר",
+                                        "w-12": order.status === "מאושר",
+                                    })}>
+                                        <p className={cn("mb-2 text-black rounded-md text-center max-sm:hidden", {
+                                            "bg-red-200 text-red-500 w-24": order.status === "ממתין לאישור",
+                                            "bg-blue-200 text-blue-500 w-12": order.status === "מאושר",
+                                            "bg-green-200 text-green-500 w-12": order.status === "בוצע",
+                                        })}>{order.status}</p>
+                                    </TableCell>                                    <TableCell className="max-sm:hidden">{order.branch}</TableCell>
                                     <TableCell className="max-sm:hidden">{order.num_of_guests}</TableCell>
                                     <TableCell className="max-sm:hidden">{order.created_at}</TableCell>
                                     <TableCell className="max-sm:hidden">{order.time}</TableCell>
